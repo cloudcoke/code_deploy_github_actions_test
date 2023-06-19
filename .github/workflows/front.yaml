@@ -35,5 +35,12 @@ jobs:
       - name: ZIP
         working-directory: front
         run: |
-          echo $(dpkg -l | grep zip)
+          zip front.zip package.json build
+          echo $(ls)
+          cp front.zip ../front.zip
+
+      - name: Test
+        run: |
+          echo $(ls)
+          unzip front.zip
           echo $(ls)
