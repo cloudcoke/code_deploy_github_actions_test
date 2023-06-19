@@ -21,3 +21,11 @@ jobs:
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm install --lts
           echo $(node --version)
+          echo $(pwd)
+          echo $(ls)
+
+      - name: Install dependencies
+        working-directory: front
+        run: |
+          echo $(pwd)
+          echo $(ls)
