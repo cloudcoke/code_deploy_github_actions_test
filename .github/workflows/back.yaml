@@ -41,7 +41,7 @@ jobs:
 
       - name: ZIP
         run: |
-          zip back.zip appspec.yml package.json dist scripts
+          zip -r back.zip appspec.yml package.json dist/ scripts/
 
       - name: Upload Build File
         run: |
