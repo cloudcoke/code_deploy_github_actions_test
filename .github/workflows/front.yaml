@@ -21,14 +21,14 @@ jobs:
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm install --lts
 
-      - name: Install dependencies
+      - name: Install dependencies & Test
         working-directory: front
         run: |
           npm install
-          echo $(ls)
-          echo $(pwd)
+          npm run test
 
       - name: Build
+        working-directory: front
         run: |
           echo $(ls)
           echo $(pwd)
