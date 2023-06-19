@@ -41,7 +41,7 @@ jobs:
 
       - name: ZIP
         run: |
-          zip -r front.zip appspec.yml build/
+          zip -r front.zip appspec.yml build/ scripts/
 
       - name: Upload Build File
         run: |
