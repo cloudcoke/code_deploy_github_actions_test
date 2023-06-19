@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/www
+
+permissions:
+  - object: /home/ubuntu/www
+    pattern: '**'
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  AfterInstall:
+    - location: scripts/start_process.sh
+      timeout: 120
+      runas: ubuntu
