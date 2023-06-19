@@ -9,4 +9,4 @@ export NVM_DIR="$HOME/.nvm"
 npm install
 
 pm2 delete all
-pm2 start dist/main.js
+pm2 start main.js
