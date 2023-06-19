@@ -1,7 +1,9 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: dist
+    destination: /home/ubuntu/www
+  - source: package.json
     destination: /home/ubuntu/www
 file_exists_behavior: OVERWRITE
 
