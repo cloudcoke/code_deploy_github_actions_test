@@ -20,12 +20,15 @@ jobs:
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm install --lts
-          echo $(node --version)
-          echo $(pwd)
-          echo $(ls)
 
       - name: Install dependencies
         working-directory: front
         run: |
-          echo $(pwd)
+          npm install
           echo $(ls)
+          echo $(pwd)
+
+      - name: Build
+        run: |
+          echo $(ls)
+          echo $(pwd)
