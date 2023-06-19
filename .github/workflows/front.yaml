@@ -17,5 +17,6 @@ jobs:
 
       - name: Install node lts
         run: |
+          echo $NVM_DIR
           nvm install --lts
           echo $(node --version)
