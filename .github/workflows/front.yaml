@@ -31,3 +31,9 @@ jobs:
         working-directory: front
         run: |
           npm run build
+
+      - name: ZIP
+        working-directory: front
+        run: |
+          echo $(dpkg -l | grep zip)
+          echo $(ls)
