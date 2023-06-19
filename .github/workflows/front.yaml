@@ -7,9 +7,18 @@ on:
     paths:
       - "front/**"
 
+env:
+  AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
+  AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
+  AWS_DEFAULT_REGION: ${{secrets.AWS_DEFAULT_REGION}}
+  AWS_S3_NAME: ${{secrets.AWS_S3_NAME}}
+
 jobs:
   front_deploy:
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: front
 
     steps:
       - name: Checkout Code
@@ -22,27 +31,22 @@ jobs:
           nvm install --lts
 
       - name: Install dependencies & Test
-        working-directory: front
         run: |
           npm install
           npm run test
 
       - name: Build
-        working-directory: front
         run: |
           npm run build
 
       - name: ZIP
-        working-directory: front
         run: |
           zip front.zip package.json appspec.yaml build
 
       - name: Upload Build File
-        working-directory: front
-        env:
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
-          AWS_DEFAULT_REGION: ${{secrets.AWS_DEFAULT_REGION}}
-          AWS_S3_NAME: ${{secrets.AWS_S3_NAME}}
         run: |
           aws s3 cp front.zip s3://$AWS_S3_NAME/front.zip
+
+      - name: Code Deploy
+        run: |
+          aws deploy create-deployment --application-name front-code-deploy --deployment-group-name front-code-deploy-group  --s3-location bucket=$AWS_S3_NAME,bundleType=zip,key=front.zip
