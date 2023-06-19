@@ -41,12 +41,15 @@ jobs:
 
       - name: ZIP
         run: |
-          zip front.zip package.json appspec.yaml build
+          zip front.zip appspec.yaml build
 
       - name: Upload Build File
         run: |
           aws s3 cp front.zip s3://$AWS_S3_NAME/front.zip
 
       - name: Code Deploy
+        env:
+          FRONT_DEPLOY_NAME: ${{secrets.FRONT_DEPLOY_NAME}}
+          FRONT_DEPLOY_GROUP_NAME: ${{secrets.FRONT_DEPLOY_GROUP_NAME}}
         run: |
-          aws deploy create-deployment --application-name front-code-deploy --deployment-group-name front-code-deploy-group  --s3-location bucket=$AWS_S3_NAME,bundleType=zip,key=front.zip
+          aws deploy create-deployment --application-name $FRONT_DEPLOY_NAME --deployment-group-name $FRONT_DEPLOY_GROUP_NAME  --s3-location bucket=$AWS_S3_NAME,bundleType=zip,key=front.zip

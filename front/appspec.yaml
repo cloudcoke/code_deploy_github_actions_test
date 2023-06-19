@@ -1,6 +1,6 @@
 version: 0.0
 os: linux
 files:
-  - source: front/build
+  - source: build
     destination: /home/ubuntu/www/build
 file_exists_behavior: OVERWRITE
