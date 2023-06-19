@@ -8,7 +8,7 @@ files:
 file_exists_behavior: OVERWRITE
 
 permissions:
-  - object: /home/ubuntu/www
+  - object: /home/ubuntu
     pattern: '**'
     owner: ubuntu
     group: ubuntu
@@ -16,5 +16,5 @@ permissions:
 hooks:
   AfterInstall:
     - location: scripts/start_process.sh
-      timeout: 120
+      timeout: 180
       runas: ubuntu
