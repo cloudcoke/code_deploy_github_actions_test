@@ -42,3 +42,4 @@ jobs:
           key: ${{secrets.FRONT_TEST_SERVER_PRIVATE_KEY}}
           source: "front/build"
           target: "www"
+          strip_components: 1
