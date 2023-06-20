@@ -50,6 +50,8 @@ jobs:
           key: ${{secrets.BACK_TEST_SERVER_PRIVATE_KEY}}
           port: ${{secrets.PORT}}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd /home/ubuntu/www
             pm2 delete all
             mv dist/* . && rmdir dist
