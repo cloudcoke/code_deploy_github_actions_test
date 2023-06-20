@@ -16,7 +16,7 @@ describe('AppController', () => {
 
   describe('root', () => {
     it('should return "Success to Health Check"', () => {
-      expect(appController.getHello()).toBe('Success to Health Check!!');
+      expect(appController.getHello()).toBe('Success to Health Check');
     });
   });
 });
