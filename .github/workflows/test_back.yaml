@@ -56,4 +56,4 @@ jobs:
             pm2 delete all
             mv dist/* . && rmdir dist
             npm install
-            pm2 start dist/main.js
+            pm2 start main.js
