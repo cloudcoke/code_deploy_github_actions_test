@@ -5,12 +5,6 @@ files:
     destination: /home/ubuntu/backup
 file_exists_behavior: OVERWRITE
 
-permissions:
-  - object: /home/ubuntu
-    pattern: "**"
-    owner: ubuntu
-    group: ubuntu
-
 hooks:
   AfterInstall:
     - location: scripts/mv_build_file.sh
