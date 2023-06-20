@@ -2,4 +2,4 @@
 
 cd /home/ubuntu/backup
 
-mv * /home/ubuntu/build
+mv -f * /home/ubuntu/www/build
