@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-cd /home/ubuntu/backup
 sudo chown -R ubuntu: /home/ubuntu
 
-mv -f * /home/ubuntu/www/build
+mv -f /home/ubuntu/backup /home/ubuntu/www/build
